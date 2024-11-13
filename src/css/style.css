@@ -1,0 +1,76 @@
+* Глобальные стили */
+* {
+    box-sizing: border-box;
+}
+
+/* Стили для галереи изображений */
+.gallery {
+    display: grid;
+    /* Используем грид для большего контроля */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Отзывчивая сетка */
+    gap: 15px;
+    /* Отступы между изображениями */
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .info {
+    opacity: 1;
+}
+
+.info p {
+    margin: 5px 0;
+}
+
+/* Медиазапросы для адаптивности */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        /* Меньше колонок на средних экранах */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        /* Одна колонка на маленьких экранах */
+    }
+
+    .info {
+        font-size: 12px;
+        /* Уменьшаем шрифт на маленьких экранах */
+    }
+}
